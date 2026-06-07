@@ -1,4 +1,4 @@
-namespace prismodPurchase.Src.Infraestructure.ExternalServices;
+namespace fastinventoryPurchase.Src.Infraestructure.ExternalServices;
 
 public class StockValidationItemDto
 {

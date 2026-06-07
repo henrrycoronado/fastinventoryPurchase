@@ -1,11 +1,11 @@
-using prismodPurchase.Src.Application.DTOs.Purchasing;
-using prismodPurchase.Src.Application.DTOs.Common;
-using prismodPurchase.Src.Application.Interfaces;
-using prismodPurchase.Src.Domain.Entities;
-using prismodPurchase.Src.Infraestructure.Persistence.Interfaces;
-using prismodPurchase.Src.Infraestructure.ExternalServices;
+using fastinventoryPurchase.Src.Application.DTOs.Purchasing;
+using fastinventoryPurchase.Src.Application.DTOs.Common;
+using fastinventoryPurchase.Src.Application.Interfaces;
+using fastinventoryPurchase.Src.Domain.Entities;
+using fastinventoryPurchase.Src.Infraestructure.Persistence.Interfaces;
+using fastinventoryPurchase.Src.Infraestructure.ExternalServices;
 
-namespace prismodPurchase.Src.Application.Services;
+namespace fastinventoryPurchase.Src.Application.Services;
 
 public class PurchaseOrderService : IPurchaseOrderService
 {

@@ -1,6 +1,6 @@
-using prismodPurchase.Src.Infraestructure.Persistence.Interfaces;
+using fastinventoryPurchase.Src.Infraestructure.Persistence.Interfaces;
 
-namespace prismodPurchase.Src.Infraestructure.Persistence.Repositories;
+namespace fastinventoryPurchase.Src.Infraestructure.Persistence.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {

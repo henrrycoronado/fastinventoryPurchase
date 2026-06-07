@@ -1,4 +1,4 @@
-namespace prismodPurchase.Src.Infraestructure.Persistence.Models;
+namespace fastinventoryPurchase.Src.Infraestructure.Persistence.Models;
 
 public class SupplierModel
 {

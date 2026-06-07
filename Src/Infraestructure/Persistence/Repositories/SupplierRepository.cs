@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using prismodPurchase.Src.Domain.Entities;
-using prismodPurchase.Src.Infraestructure.Persistence.Interfaces;
-using prismodPurchase.Src.Infraestructure.Persistence.Models;
+using fastinventoryPurchase.Src.Domain.Entities;
+using fastinventoryPurchase.Src.Infraestructure.Persistence.Interfaces;
+using fastinventoryPurchase.Src.Infraestructure.Persistence.Models;
 
-namespace prismodPurchase.Src.Infraestructure.Persistence.Repositories;
+namespace fastinventoryPurchase.Src.Infraestructure.Persistence.Repositories;
 
 public class SupplierRepository : ISupplierRepository
 {

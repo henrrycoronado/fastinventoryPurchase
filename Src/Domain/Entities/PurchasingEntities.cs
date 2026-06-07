@@ -1,4 +1,4 @@
-namespace prismodPurchase.Src.Domain.Entities;
+namespace fastinventoryPurchase.Src.Domain.Entities;
 
 public class Supplier
 {

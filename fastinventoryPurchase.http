@@ -1,0 +1,6 @@
+@fastinventoryPurchase_HostAddress = http://localhost:5186
+
+GET {{fastinventoryPurchase_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

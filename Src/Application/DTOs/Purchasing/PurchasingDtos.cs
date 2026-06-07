@@ -1,4 +1,4 @@
-namespace prismodPurchase.Src.Application.DTOs.Purchasing;
+namespace fastinventoryPurchase.Src.Application.DTOs.Purchasing;
 
 public class SupplierDto
 {

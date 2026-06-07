@@ -1,4 +1,4 @@
-## Prismod Purchase
+## Fastinventory Purchase
 
 Base structure for the Purchase API.
 
@@ -18,7 +18,7 @@ Base structure for the Purchase API.
 
 ### Manual setup
 
-From the `prismodPurchase` folder, run these steps once:
+From the `fastinventoryPurchase` folder, run these steps once:
 
 ```bash
 dotnet tool restore
@@ -28,8 +28,8 @@ dotnet husky install
 Useful checks:
 
 ```bash
-dotnet format prismodPurchase.csproj --verify-no-changes
-dotnet build prismodPurchase.csproj
+dotnet format fastinventoryPurchase.csproj --verify-no-changes
+dotnet build fastinventoryPurchase.csproj
 ```
 
 The hooks live in `.husky/`:

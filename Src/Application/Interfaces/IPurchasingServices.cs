@@ -1,7 +1,7 @@
-using prismodPurchase.Src.Application.DTOs.Purchasing;
-using prismodPurchase.Src.Application.DTOs.Common;
+using fastinventoryPurchase.Src.Application.DTOs.Purchasing;
+using fastinventoryPurchase.Src.Application.DTOs.Common;
 
-namespace prismodPurchase.Src.Application.Interfaces;
+namespace fastinventoryPurchase.Src.Application.Interfaces;
 
 public interface ISupplierService
 {

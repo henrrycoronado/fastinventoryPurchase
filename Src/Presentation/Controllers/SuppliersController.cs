@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using prismodPurchase.Src.Application.DTOs.Purchasing;
-using prismodPurchase.Src.Application.Interfaces;
+using fastinventoryPurchase.Src.Application.DTOs.Purchasing;
+using fastinventoryPurchase.Src.Application.Interfaces;
 
-namespace prismodPurchase.Src.Presentation.Controllers;
+namespace fastinventoryPurchase.Src.Presentation.Controllers;
 
 [ApiController]
 [Route("api/purchases/companies/{companyCen}/suppliers")]

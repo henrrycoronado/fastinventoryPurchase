@@ -1,7 +1,7 @@
-using prismodPurchase.Src.Domain.Entities;
-using prismodPurchase.Src.Application.DTOs.Common;
+using fastinventoryPurchase.Src.Domain.Entities;
+using fastinventoryPurchase.Src.Application.DTOs.Common;
 
-namespace prismodPurchase.Src.Infraestructure.Persistence.Interfaces;
+namespace fastinventoryPurchase.Src.Infraestructure.Persistence.Interfaces;
 
 public interface ISupplierRepository
 {
