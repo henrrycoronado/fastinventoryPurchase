@@ -1,4 +1,4 @@
-namespace PrismodPurchase.Src.Infraestructure.ExternalServices.Models;
+namespace prismodPurchase.Src.Infraestructure.ExternalServices;
 
 public class StockValidationItemDto
 {

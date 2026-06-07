@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <AnalysisLevel>latest</AnalysisLevel>
-    <RootNamespace>PrismodPurchase</RootNamespace>
+    <RootNamespace>prismodPurchase</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

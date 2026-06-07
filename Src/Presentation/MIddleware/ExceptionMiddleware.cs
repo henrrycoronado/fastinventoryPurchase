@@ -1,7 +1,7 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 
-namespace PrismodPurchase.Src.Presentation.MIddleware;
+namespace prismodPurchase.Src.Presentation.MIddleware;
 
 public class ExceptionMiddleware
 {

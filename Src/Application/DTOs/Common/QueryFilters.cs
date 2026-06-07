@@ -1,4 +1,4 @@
-namespace PrismodPurchase.Src.Application.DTOs.Common;
+namespace prismodPurchase.Src.Application.DTOs.Common;
 
 public class PurchaseOrderQueryFilters
 {

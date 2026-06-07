@@ -1,11 +1,11 @@
-using PrismodPurchase.Src.Application.DTOs.Purchasing;
-using PrismodPurchase.Src.Application.DTOs.Common;
-using PrismodPurchase.Src.Application.Interfaces;
-using PrismodPurchase.Src.Domain.Entities;
-using PrismodPurchase.Src.Infraestructure.Persistence.Interfaces;
-using PrismodPurchase.Src.Infraestructure.ExternalServices.Models;
+using prismodPurchase.Src.Application.DTOs.Purchasing;
+using prismodPurchase.Src.Application.DTOs.Common;
+using prismodPurchase.Src.Application.Interfaces;
+using prismodPurchase.Src.Domain.Entities;
+using prismodPurchase.Src.Infraestructure.Persistence.Interfaces;
+using prismodPurchase.Src.Infraestructure.ExternalServices;
 
-namespace PrismodPurchase.Src.Application.Services;
+namespace prismodPurchase.Src.Application.Services;
 
 public class PurchaseOrderService : IPurchaseOrderService
 {
@@ -32,6 +32,22 @@ public class PurchaseOrderService : IPurchaseOrderService
         await _unitOfWork.SaveChangesAsync();
 
         return new PurchaseOrderSummaryDto { OrderCen = order.OrderCen, Status = order.Status };
+    }
+
+    public async Task UpdateAsync(string orderCen, CreatePurchaseOrderDto dto)
+    {
+        var order = await _repository.GetByCenAsync(orderCen);
+        if (order == null) throw new KeyNotFoundException("Order not found");
+        if (order.Status != 0) throw new InvalidOperationException("Only orders with status CREATED can be modified");
+
+        typeof(PurchaseOrder).GetProperty(nameof(PurchaseOrder.WarehouseCen))?.SetValue(order, dto.WarehouseCen);
+        typeof(PurchaseOrder).GetProperty(nameof(PurchaseOrder.SupplierCen))?.SetValue(order, dto.SupplierCen);
+
+        var newItems = dto.Items.Select(i => new PurchaseOrderItem(i.ProductCen, i.Quantity)).ToList();
+        
+        await _repository.UpdateAsync(order);
+        await _repository.ReplaceItemsAsync(orderCen, newItems);
+        await _unitOfWork.SaveChangesAsync();
     }
 
     public async Task<PurchaseOrderDetailDto?> GetByCenAsync(string orderCen)
@@ -82,7 +98,6 @@ public class PurchaseOrderService : IPurchaseOrderService
         if (order == null) throw new KeyNotFoundException("Order not found");
         if (order.Status == 1) throw new InvalidOperationException("Order already confirmed");
 
-        // 1. Call Inventory API to increase stock
         var stockRequest = new StockValidationRequestDto
         {
             WarehouseCen = order.WarehouseCen,
@@ -101,7 +116,6 @@ public class PurchaseOrderService : IPurchaseOrderService
             throw new InvalidOperationException("Failed to update stock in Inventory system");
         }
 
-        // 2. Update local order status
         order.Confirm();
         await _repository.UpdateAsync(order);
         await _unitOfWork.SaveChangesAsync();

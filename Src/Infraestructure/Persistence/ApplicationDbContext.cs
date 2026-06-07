@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using PrismodPurchase.Src.Infraestructure.Persistence.Models;
+using prismodPurchase.Src.Infraestructure.Persistence.Models;
 
-namespace PrismodPurchase.Src.Infraestructure.Persistence;
+namespace prismodPurchase.Src.Infraestructure.Persistence;
 
 public class ApplicationDbContext : DbContext
 {

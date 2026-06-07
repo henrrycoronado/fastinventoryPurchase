@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using PrismodPurchase.Src.Application.DTOs.Purchasing;
-using PrismodPurchase.Src.Application.DTOs.Common;
-using PrismodPurchase.Src.Application.Interfaces;
+using prismodPurchase.Src.Application.DTOs.Purchasing;
+using prismodPurchase.Src.Application.DTOs.Common;
+using prismodPurchase.Src.Application.Interfaces;
 
-namespace PrismodPurchase.Src.Presentation.Controllers;
+namespace prismodPurchase.Src.Presentation.Controllers;
 
 [ApiController]
 [Route("api/purchases/companies/{companyCen}/orders")]
@@ -44,6 +44,13 @@ public class OrdersController : ControllerBase
     {
         var result = await _orderService.CreateAsync(companyCen, dto);
         return CreatedAtAction(nameof(GetByCen), new { companyCen, orderCen = result.OrderCen }, result);
+    }
+
+    [HttpPut("{orderCen}")]
+    public async Task<IActionResult> Update(string companyCen, string orderCen, CreatePurchaseOrderDto dto)
+    {
+        await _orderService.UpdateAsync(orderCen, dto);
+        return NoContent();
     }
 
     [HttpPost("{orderCen}/confirm")]

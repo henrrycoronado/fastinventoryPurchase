@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using PrismodPurchase.Src.Domain.Entities;
-using PrismodPurchase.Src.Application.DTOs.Common;
-using PrismodPurchase.Src.Infraestructure.Persistence.Interfaces;
-using PrismodPurchase.Src.Infraestructure.Persistence.Models;
+using prismodPurchase.Src.Domain.Entities;
+using prismodPurchase.Src.Application.DTOs.Common;
+using prismodPurchase.Src.Infraestructure.Persistence.Interfaces;
+using prismodPurchase.Src.Infraestructure.Persistence.Models;
 
-namespace PrismodPurchase.Src.Infraestructure.Persistence.Repositories;
+namespace prismodPurchase.Src.Infraestructure.Persistence.Repositories;
 
 public class PurchaseOrderRepository : IPurchaseOrderRepository
 {
@@ -53,7 +53,26 @@ public class PurchaseOrderRepository : IPurchaseOrderRepository
         {
             model.Status = order.Status;
             model.ConfirmedAt = order.ConfirmedAt;
+            model.WarehouseCen = order.WarehouseCen;
+            model.SupplierCen = order.SupplierCen;
             _dbContext.PurchaseOrders.Update(model);
+        }
+    }
+
+    public async Task ReplaceItemsAsync(string orderCen, IEnumerable<PurchaseOrderItem> newItems)
+    {
+        var existingItems = await _dbContext.PurchaseOrderItems.Where(i => i.OrderCen == orderCen).ToListAsync();
+        _dbContext.PurchaseOrderItems.RemoveRange(existingItems);
+
+        foreach (var item in newItems)
+        {
+            await _dbContext.PurchaseOrderItems.AddAsync(new PurchaseOrderItemModel
+            {
+                ItemCen = item.ItemCen,
+                OrderCen = orderCen,
+                ProductCen = item.ProductCen,
+                Quantity = item.Quantity
+            });
         }
     }
 

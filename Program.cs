@@ -1,12 +1,12 @@
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
-using PrismodPurchase.Src.Application.Interfaces;
-using PrismodPurchase.Src.Application.Services;
-using PrismodPurchase.Src.Infraestructure.Persistence;
-using PrismodPurchase.Src.Infraestructure.Persistence.Interfaces;
-using PrismodPurchase.Src.Infraestructure.Persistence.Repositories;
-using PrismodPurchase.Src.Presentation.MIddleware;
-using PrismodPurchase.Src.Infraestructure.ExternalServices.Models;
+using prismodPurchase.Src.Application.Interfaces;
+using prismodPurchase.Src.Application.Services;
+using prismodPurchase.Src.Infraestructure.Persistence;
+using prismodPurchase.Src.Infraestructure.Persistence.Interfaces;
+using prismodPurchase.Src.Infraestructure.Persistence.Repositories;
+using prismodPurchase.Src.Presentation.MIddleware;
+using prismodPurchase.Src.Infraestructure.ExternalServices;
 
 Env.Load();
 

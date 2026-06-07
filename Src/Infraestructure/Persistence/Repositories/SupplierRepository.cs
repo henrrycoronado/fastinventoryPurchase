@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using PrismodPurchase.Src.Domain.Entities;
-using PrismodPurchase.Src.Infraestructure.Persistence.Interfaces;
-using PrismodPurchase.Src.Infraestructure.Persistence.Models;
+using prismodPurchase.Src.Domain.Entities;
+using prismodPurchase.Src.Infraestructure.Persistence.Interfaces;
+using prismodPurchase.Src.Infraestructure.Persistence.Models;
 
-namespace PrismodPurchase.Src.Infraestructure.Persistence.Repositories;
+namespace prismodPurchase.Src.Infraestructure.Persistence.Repositories;
 
 public class SupplierRepository : ISupplierRepository
 {
@@ -25,6 +25,16 @@ public class SupplierRepository : ISupplierRepository
     public async Task AddAsync(Supplier supplier)
     {
         await _dbContext.Suppliers.AddAsync(MapToModel(supplier));
+    }
+
+    public async Task UpdateAsync(Supplier supplier)
+    {
+        var model = await _dbContext.Suppliers.FirstOrDefaultAsync(s => s.SupplierCen == supplier.SupplierCen);
+        if (model != null)
+        {
+            model.Name = supplier.Name;
+            _dbContext.Suppliers.Update(model);
+        }
     }
 
     private static Supplier MapToDomain(SupplierModel model)

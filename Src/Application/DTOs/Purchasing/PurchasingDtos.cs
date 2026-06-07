@@ -1,8 +1,19 @@
-namespace PrismodPurchase.Src.Application.DTOs.Purchasing;
+namespace prismodPurchase.Src.Application.DTOs.Purchasing;
 
 public class SupplierDto
 {
     public string SupplierCen { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
+}
+
+public class CreateSupplierDto
+{
+    public string CompanyCen { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
+}
+
+public class UpdateSupplierDto
+{
     public string Name { get; set; } = string.Empty;
 }
 

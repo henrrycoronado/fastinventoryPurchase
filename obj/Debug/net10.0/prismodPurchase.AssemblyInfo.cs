@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("prismodPurchase")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b34d737f9bc8f49a9538c04948157d279ac7782")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a4bfe3fc492439212ea7bdf64c038c53fc8ff1a8")]
 [assembly: System.Reflection.AssemblyProductAttribute("prismodPurchase")]
 [assembly: System.Reflection.AssemblyTitleAttribute("prismodPurchase")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
