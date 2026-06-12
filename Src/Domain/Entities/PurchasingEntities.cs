@@ -20,7 +20,7 @@ public class PurchaseOrder
     public string CompanyCen { get; private set; }
     public string WarehouseCen { get; private set; }
     public string SupplierCen { get; private set; }
-    public short Status { get; private set; } // 0: Created, 1: Confirmed
+    public short Status { get; private set; }
     public DateTimeOffset CreatedAt { get; private set; }
     public DateTimeOffset? ConfirmedAt { get; private set; }
 

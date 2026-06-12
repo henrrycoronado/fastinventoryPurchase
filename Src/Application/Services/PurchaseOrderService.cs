@@ -44,7 +44,6 @@ public class PurchaseOrderService : IPurchaseOrderService
         typeof(PurchaseOrder).GetProperty(nameof(PurchaseOrder.SupplierCen))?.SetValue(order, dto.SupplierCen);
 
         var newItems = dto.Items.Select(i => new PurchaseOrderItem(i.ProductCen, i.Quantity)).ToList();
-        
         await _repository.UpdateAsync(order);
         await _repository.ReplaceItemsAsync(orderCen, newItems);
         await _unitOfWork.SaveChangesAsync();
