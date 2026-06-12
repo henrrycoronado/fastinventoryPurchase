@@ -30,7 +30,7 @@ public class SupplierService : ISupplierService
         return new SupplierDto { SupplierCen = supplier.SupplierCen, Name = supplier.Name };
     }
 
-    public async Task UpdateAsync(string supplierCen, UpdateSupplierDto dto)
+    public async Task<SupplierDto> UpdateAsync(string supplierCen, UpdateSupplierDto dto)
     {
         var supplier = await _repository.GetByCenAsync(supplierCen);
         if (supplier == null) throw new KeyNotFoundException("Supplier not found");
@@ -39,5 +39,7 @@ public class SupplierService : ISupplierService
 
         await _repository.UpdateAsync(supplier);
         await _unitOfWork.SaveChangesAsync();
+
+        return new SupplierDto { SupplierCen = supplier.SupplierCen, Name = supplier.Name };
     }
 }

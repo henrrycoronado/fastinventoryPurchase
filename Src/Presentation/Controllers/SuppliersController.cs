@@ -26,9 +26,9 @@ public class SuppliersController : ControllerBase
     }
 
     [HttpPut("{supplierCen}")]
-    public async Task<IActionResult> Update(string supplierCen, UpdateSupplierDto dto)
+    public async Task<ActionResult<SupplierDto>> Update(string supplierCen, UpdateSupplierDto dto)
     {
-        await _supplierService.UpdateAsync(supplierCen, dto);
-        return NoContent();
+        var supplier = await _supplierService.UpdateAsync(supplierCen, dto);
+        return Ok(supplier);
     }
 }

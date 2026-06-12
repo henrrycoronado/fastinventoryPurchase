@@ -34,7 +34,7 @@ public class PurchaseOrderService : IPurchaseOrderService
         return new PurchaseOrderSummaryDto { OrderCen = order.OrderCen, Status = order.Status };
     }
 
-    public async Task UpdateAsync(string orderCen, CreatePurchaseOrderDto dto)
+    public async Task<PurchaseOrderSummaryDto> UpdateAsync(string orderCen, CreatePurchaseOrderDto dto)
     {
         var order = await _repository.GetByCenAsync(orderCen);
         if (order == null) throw new KeyNotFoundException("Order not found");
@@ -48,6 +48,8 @@ public class PurchaseOrderService : IPurchaseOrderService
         await _repository.UpdateAsync(order);
         await _repository.ReplaceItemsAsync(orderCen, newItems);
         await _unitOfWork.SaveChangesAsync();
+
+        return new PurchaseOrderSummaryDto { OrderCen = order.OrderCen, Status = order.Status };
     }
 
     public async Task<PurchaseOrderDetailDto?> GetByCenAsync(string orderCen)

@@ -47,10 +47,10 @@ public class OrdersController : ControllerBase
     }
 
     [HttpPut("{orderCen}")]
-    public async Task<IActionResult> Update(string companyCen, string orderCen, CreatePurchaseOrderDto dto)
+    public async Task<ActionResult<PurchaseOrderSummaryDto>> Update(string companyCen, string orderCen, CreatePurchaseOrderDto dto)
     {
-        await _orderService.UpdateAsync(orderCen, dto);
-        return NoContent();
+        var result = await _orderService.UpdateAsync(orderCen, dto);
+        return Ok(result);
     }
 
     [HttpPost("{orderCen}/confirm")]
