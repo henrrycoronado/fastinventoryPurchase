@@ -53,8 +53,8 @@ public class OrdersController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPost("{orderCen}/confirm")]
-    public async Task<ActionResult<PurchaseOrderConfirmationDto>> Confirm(string companyCen, string orderCen)
+    [HttpPost("{orderCen}/receive")]
+    public async Task<ActionResult<PurchaseOrderConfirmationDto>> Receive(string companyCen, string orderCen)
     {
         var result = await _orderService.ConfirmAsync(companyCen, orderCen);
         return Ok(result);

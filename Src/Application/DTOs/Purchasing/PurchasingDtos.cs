@@ -20,7 +20,7 @@ public class UpdateSupplierDto
 public class CreatePurchaseOrderItemDto
 {
     public string ProductCen { get; set; } = string.Empty;
-    public int Quantity { get; set; }
+    public double Quantity { get; set; }
 }
 
 public class CreatePurchaseOrderDto
@@ -49,7 +49,7 @@ public class PurchaseOrderListDto
 public class PurchaseOrderDetailItemDto
 {
     public string ProductCen { get; set; } = string.Empty;
-    public int Quantity { get; set; }
+    public double Quantity { get; set; }
 }
 
 public class PurchaseOrderDetailDto

@@ -25,7 +25,7 @@ public class PurchaseOrderService : IPurchaseOrderService
         var order = new PurchaseOrder(companyCen, dto.WarehouseCen, dto.SupplierCen);
         foreach (var item in dto.Items)
         {
-            order.AddItem(item.ProductCen, item.Quantity);
+            order.AddItem(item.ProductCen, (decimal)item.Quantity);
         }
 
         await _repository.AddAsync(order);
@@ -43,7 +43,7 @@ public class PurchaseOrderService : IPurchaseOrderService
         typeof(PurchaseOrder).GetProperty(nameof(PurchaseOrder.WarehouseCen))?.SetValue(order, dto.WarehouseCen);
         typeof(PurchaseOrder).GetProperty(nameof(PurchaseOrder.SupplierCen))?.SetValue(order, dto.SupplierCen);
 
-        var newItems = dto.Items.Select(i => new PurchaseOrderItem(i.ProductCen, i.Quantity)).ToList();
+        var newItems = dto.Items.Select(i => new PurchaseOrderItem(i.ProductCen, (decimal)i.Quantity)).ToList();
         await _repository.UpdateAsync(order);
         await _repository.ReplaceItemsAsync(orderCen, newItems);
         await _unitOfWork.SaveChangesAsync();
@@ -67,7 +67,7 @@ public class PurchaseOrderService : IPurchaseOrderService
             Items = order.Items.Select(i => new PurchaseOrderDetailItemDto
             {
                 ProductCen = i.ProductCen,
-                Quantity = (int)i.Quantity
+                Quantity = (double)i.Quantity
             }).ToList()
         };
     }
