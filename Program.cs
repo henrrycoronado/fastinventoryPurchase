@@ -41,12 +41,26 @@ builder.Services.AddScoped<ISupplierService, SupplierService>();
 builder.Services.AddScoped<IPurchaseOrderService, PurchaseOrderService>();
 
 builder.Services.AddControllers();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        policy =>
+        {
+            policy.WithOrigins("*")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
 app.UseMiddleware<ExceptionMiddleware>();
+
+app.UseCors("AllowFrontend");
 
 if (app.Environment.IsDevelopment())
 {
